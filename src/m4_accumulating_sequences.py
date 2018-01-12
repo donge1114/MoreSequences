@@ -13,17 +13,17 @@ import rosegraphics as rg
 
 def main():
     """ Calls the various   TEST   functions in this module. """
-    run_test_make_simple_list()
-    run_test_make_simple_string()
-    run_test_make_less_simple_string()
+    #run_test_make_simple_list()
+    #run_test_make_simple_string()
+    #run_test_make_less_simple_string()
 
     # ------------------------------------------------------------------
-    # TODO: 8. Uncomment the tests below before working TO DO 9.
+    # DONE: 8. Uncomment the tests below before working TO DO 9.
     #   They launch annoying rg.RoseWindows on each run that you don't want
     #   until you get to TO DO 9 and 10.
     # ------------------------------------------------------------------
-    # run_test_draw_shapes()
-    # run_test_rectangles_from_circles()
+    #run_test_draw_shapes()
+    run_test_rectangles_from_circles()
 
 
 def run_test_make_simple_list():
@@ -151,7 +151,7 @@ def make_simple_string(m, n):
 def run_test_make_less_simple_string():
     """ Tests the   make_less_simple_string    function. """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement this TEST function.
+    # DONE: 6. Implement this TEST function.
     #   It TESTS the  make_less_simple_string  function defined below.
     #   Include at least **   2   ** tests.
     #
@@ -204,7 +204,7 @@ def make_less_simple_string(m, n):
       :type n: int
     """
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -----------------------------------------------------------------
 
@@ -293,7 +293,8 @@ def draw_shapes(shapes, window):
       :type window:  rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 9. Implement and test this function. Make sure you do TO DO 8 in main first!
+    # DONE: 9. Implement and test this function. Make sure you do TO DO 8 in
+    # main first!
     #     The testing code is already written for you (that you just enabled in TO DO 8).
     #
     ####################################################################
@@ -303,6 +304,10 @@ def draw_shapes(shapes, window):
     # FWIW: The word for ideas like this is "polymorphism".
     ####################################################################
     # ------------------------------------------------------------------
+    for k in range (len(shapes)):
+        shapes[k].attach_to(window)
+        window.render(0.3)
+
 
 
 def run_test_rectangles_from_circles():
@@ -404,7 +409,7 @@ def rectangles_from_circles(circles):
       :rtype: list of rg.Rectangles
     """
     # ------------------------------------------------------------------
-    # TODO: 10. Implement and test this function.
+    # DONE: 10. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
@@ -415,6 +420,17 @@ def rectangles_from_circles(circles):
     #            in this function, so DON'T draw anything in here!
     ####################################################################
     # ------------------------------------------------------------------
+    rect = []
+    for k in range (len(circles)):
+        radius = circles[k].radius
+        center = circles[k].center
+        x = center.x
+        y = center.y
+        cor1 = rg.Point(x-radius, y-radius)
+        cor2 = rg.Point(x+radius, y+radius)
+        rect.append(rg.Rectangle(cor1, cor2))
+    return rect
+
 
 
 # ----------------------------------------------------------------------
